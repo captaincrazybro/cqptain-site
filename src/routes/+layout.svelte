@@ -1,4 +1,7 @@
 <script>
-    import "../../static/style.css"
+    import Page from "$lib/Page.svelte";
 </script>
 
+<Page>
+    <slot />
+</Page>
