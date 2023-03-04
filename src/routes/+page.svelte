@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import Fa from 'svelte-fa'
     import { faFileArrowDown } from '@fortawesome/free-solid-svg-icons'
 </script>
@@ -17,7 +17,7 @@
         width: 15%;
     }
     .descript-container {
-        width: 85%;
+        width: 100%;
     }
 </style>
 
@@ -32,11 +32,11 @@
             Prior to the start of my degree, I had also done a lot of programming and some Computer/Electrical Engineering activities. <br />
             Bellow is a link to download my resume.
         </p>
-        <a href="https://drive.google.com/file/d/1iIYNVWcOoEcKmzvHrUGhCZYF3YIc3G4q/view?usp=sharing">
+        <a href="https://drive.google.com/file/d/1pcKiamXGTRtjuyRszFRWZojv6a3EDFoq/view?usp=sharing">
             <Fa icon={faFileArrowDown} size="5x" color="black"/>
         </a>
     </div>
-    <div class="picture-container">
+    <!-- <div class="picture-container">
         <img src="https://i.imgur.com/RMKjY1H.jpg" alt="professional-shot" />
-    </div>
+    </div> -->
 </div>
