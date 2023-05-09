@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { page } from '$app/stores'
 	import NavTab from './NavTab.svelte'
     const tabs = [
@@ -12,11 +12,10 @@
 <style>
     ul {
         list-style-type: none;
-        padding: 0;
         margin: 0;
         text-align: center;
         display: inline-block;
-        height: 100%;
+        margin-bottom: -4px;
     }
     li {
         float: left;

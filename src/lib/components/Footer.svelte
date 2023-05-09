@@ -9,5 +9,5 @@
 </style>
 
 <div class="footer">
-    Copyright 2022, Cqptain
+    Copyright 2023, Cqptain
 </div>

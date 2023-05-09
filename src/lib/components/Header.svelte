@@ -1,11 +1,10 @@
-<script>
+<script lang="ts">
     import Nav from './Nav.svelte'
 </script>
 
 <style>
     .menu {
         background-color: rgb(238, 116, 94);
-        height: 40px;
         margin-bottom: 40px;
         padding: 0 10px;
     }
@@ -15,22 +14,21 @@
         height: 100%;
         border-spacing: 0;  
     }
-    td {
-        width: 25% ;
-    }
     .menu-logo {
+        width: 15%;
         text-align: left;
-        margin-bottom: 5px;
     }
     .menu-logo a {
         color: white;
         text-decoration: none;
     }
     .menu-nav {
+        width: 70%;
         text-align: center;
         padding: 0;
     }
     .menu-account {
+        width: 15%;
         text-align: right;
         margin-bottom: 5px;
     }
