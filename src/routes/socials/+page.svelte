@@ -13,11 +13,6 @@
 </script>
 
 <style>
-    .socials-table {
-        table-layout: fixed;
-        border-spacing: 10px;  
-        margin: auto;
-    }
     .socials-icon {
         color: black;
         margin: 20px;

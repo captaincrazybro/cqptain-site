@@ -26,7 +26,6 @@
         text-align: center;
         background-color: rgb(253, 243, 243);
         border: 2px;
-        height: 200px;
         border-color: rgb(187, 187, 187);
         border-style: solid;
         box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.19);
@@ -47,7 +46,7 @@
                         </td>    
                     {/if}
                     <td>
-                        <p>{project.title}</p>
+                        <h3>{project.title}</h3>
                         <div>{@html project.description}</div>
                         <a class="project-link" href={project.link} >Project Link</a>
                     </td>
