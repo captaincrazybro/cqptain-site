@@ -6,6 +6,6 @@ declare namespace App {
 	interface Locals {
 		pb: import('pocketbase').default;
 	}
-	// interface PageData {}
+	interface PageData {}
 	// interface Platform {}
 }

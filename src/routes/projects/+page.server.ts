@@ -1,10 +1,13 @@
 import type { PageServerLoad } from './$types';
+import { POCKETBASE_URL } from '$env/static/private';
+import { getProjects } from '$lib/util/projects';
 
-export const load: PageServerLoad = async ({ locals }) => {
-    // Retrieves the projects collection
-    let projects = locals.pb.collection("projects").getFullList();
+export const load: PageServerLoad = async () => {
+    // Retrieves the writable for the projects
+    const projects = await getProjects()
 
     return {
-        projects: projects
+        projects: projects,
+        hostURL: POCKETBASE_URL
     }
 };
