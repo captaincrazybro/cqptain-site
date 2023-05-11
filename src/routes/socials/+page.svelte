@@ -1,6 +1,5 @@
 <script>
     import { faDiscord, faLinkedin } from '@fortawesome/free-brands-svg-icons'
-    import { writable } from 'svelte/store'
     import Fa from 'svelte-fa';
 
     const discordId = "cqptain#6787"; 

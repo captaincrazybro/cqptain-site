@@ -4,7 +4,7 @@
 declare namespace App {
 	// interface Error {}
 	interface Locals {
-		pb: import('pocketbase').default;
+		passwordCorrect: boolean;
 	}
 	interface PageData {}
 	// interface Platform {}
