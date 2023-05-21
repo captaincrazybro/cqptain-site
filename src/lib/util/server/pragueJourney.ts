@@ -1,29 +1,30 @@
-import PocketBase from 'pocketbase';
-import { POCKETBASE_URL, POCKETBASE_ADMIN_EMAIL, POCKETBASE_ADMIN_PSWD } from '$env/static/private';
 import { serializeNonPOJOs } from './helpers';
 import eventsource from 'eventsource'
 import type { Content } from '../client/helpers';
+import { getPocketBaseInst } from './pocketBase';
 global.EventSource = eventsource
 
 let locations: Content[]
+let isSubscribed = false
 
 // Function to load all the projects
 export async function loadLocations() {
-    // Creates a new instance of pocketbase
-    let pb = new PocketBase(POCKETBASE_URL);
-
-    // Logs in with the admin credentials
-    await pb.admins.authWithPassword(POCKETBASE_ADMIN_EMAIL, POCKETBASE_ADMIN_PSWD)
-        
+    // Gets an instance of PocketBase
+    let pb = await getPocketBaseInst()
     // Retrieves the projects
     locations = await pb.collection('pragueLocations').getFullList()
-    pb.authStore.clear()
 }
 
 // Function to get the projects stored in cache
 export async function getLocations(): Promise<Content[]> {
     if (!locations) {
-        return []
+        await loadLocations()
+        
+        // Subscribes to the projects collection if needed
+        if (!isSubscribed) {
+            await subscribeToLocations()
+            isSubscribed = true
+        }
     }
 
     return serializeNonPOJOs(locations)
@@ -33,8 +34,7 @@ export async function getLocations(): Promise<Content[]> {
 // Should only be run once at startup
 export async function subscribeToLocations() {
     // Creats instance of pocketbase
-    let pb = new PocketBase(POCKETBASE_URL)
-    await pb.admins.authWithPassword(POCKETBASE_ADMIN_EMAIL, POCKETBASE_ADMIN_PSWD)
+    let pb = await getPocketBaseInst()
 
     // Loads the projects whenever there is a change
     pb.collection('pragueLocations').subscribe('*', (e) => {

@@ -1,8 +1,21 @@
 <script lang="ts">
     import Content from '$lib/components/Content.svelte';
-    import type { PageData } from './$types';
+    import { onMount } from 'svelte';
+    import { writable } from 'svelte/store';
 
-    export let data: PageData;
+    let projects = writable([])
+    let hostURL = writable('')
+    let message = writable("Loading...")
+
+    onMount(async () => {
+        const res = await fetch("/projects", {
+            method: "POST"
+        })
+        const jsonRes = await res.json()
+
+        projects.set(jsonRes.projects)
+        hostURL.set(jsonRes.hostURL)
+    })
 </script>
 
 <style>
@@ -15,8 +28,12 @@
 </style>
 
 <h1>Projects and Accomplishments</h1>
-<div class="project-grid">
-    {#each data.projects as project}
-        <Content content={project} hostURL={data.hostURL} imageSize={"small"} />
-    {/each}
-</div>
+{#if $projects.length == 0 }
+    <p>{ $message }</p>
+{:else}
+    <div class="project-grid">
+        {#each $projects as project}
+            <Content content={project} hostURL={$hostURL} imageSize={"small"} />
+        {/each}
+    </div>
+{/if}
