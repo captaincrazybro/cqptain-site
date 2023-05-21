@@ -2,23 +2,40 @@
     import PasswordPage from "$lib/components/PasswordPage.svelte";
     import Content from "$lib/components/Content.svelte";
     import type { PageData } from "./$types";
-    import { hostURL, locations } from "$lib/util/client/pragueJourney";
+    import { onMount } from "svelte";
+    import { writable } from "svelte/store";
 
     export let data: PageData
+    let message = writable("Loading...")
+    let locations = writable([])
+    let hostURL = writable('')
     
-    if (data.locations.length > 0) {
-        locations.set(data.locations)
-    }
-    if (data.hostURL) {
-        hostURL.set(data.hostURL)
-    }
+    onMount(async () => {
+        if (data.passwordCorrect) {
+            const res = await fetch("/prague-journey", {
+                method: "POST"
+            })
+            const jsonRes = await res.json()
+
+            if (jsonRes.message) {
+                message.set(jsonRes.message)
+            } else {
+                locations.set(jsonRes.locations)
+                hostURL.set(jsonRes.hostURL)
+            }
+        }
+    })
 </script>
 
 <PasswordPage data={data}>
     <h1>Prague Journey</h1>
-    <div>
-        {#each $locations as location}
-            <Content content={location} hostURL={$hostURL} imageSize={"large"} />
-        {/each}
-    </div>
+    {#if $locations.length == 0}
+        { $message }
+    {:else}
+        <div>
+            {#each $locations as location}
+                <Content content={location} hostURL={$hostURL} imageSize={"large"} />
+            {/each}
+        </div>
+    {/if}
 </PasswordPage>

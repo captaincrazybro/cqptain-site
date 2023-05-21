@@ -1,19 +1,18 @@
 <script lang="ts">
-    import { enhance } from "$app/forms";
     import { page } from "$app/stores";
-    import { getPasswordState } from "$lib/util/client/passwordPages";
+    // import { getPasswordState } from "$lib/util/client/passwordPages";
     import type { PageData } from "$types";
 
     // Recieves the data from the password passed from the server
     export let data: PageData
 
     let slug = $page.url.pathname
-    let isValidated = getPasswordState(slug)
+    // let isValidated = getPasswordState(slug)
     let formPassword = ''
 
-    if (data.passwordCorrect) {
-        isValidated.set(true)
-    }
+    // if (data.passwordCorrect) {
+    //     isValidated.set(true)
+    // }
 
 </script>
 
@@ -37,7 +36,7 @@
     }
 </style>
 
-{#if $isValidated}
+{#if data.passwordCorrect}
     <slot/>
 {:else}
     {#if data.message}

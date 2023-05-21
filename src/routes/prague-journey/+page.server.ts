@@ -1,11 +1,8 @@
-import { POCKETBASE_URL, PRAGUE_JOURNEY_PASSWORD } from "$env/static/private";
-import { getLocations } from "$lib/util/server/pragueJourney";
+import { PRAGUE_JOURNEY_PASSWORD } from "$env/static/private";
 import type { Actions, PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = async ({ locals }) => {
     return {
-        locations: locals.passwordCorrect ? getLocations() : [],
-        hostURL: locals.passwordCorrect ? POCKETBASE_URL : '',
         passwordCorrect: locals.passwordCorrect,
         message: locals.passwordMessage,
     }
