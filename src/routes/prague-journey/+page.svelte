@@ -17,12 +17,8 @@
             })
             const jsonRes = await res.json()
 
-            if (jsonRes.message) {
-                message.set(jsonRes.message)
-            } else {
-                locations.set(jsonRes.locations)
-                hostURL.set(jsonRes.hostURL)
-            }
+            locations.set(jsonRes.locations)
+            hostURL.set(jsonRes.hostURL)
         }
     })
 </script>
