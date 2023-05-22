@@ -37,7 +37,7 @@ export async function subscribeToLocations() {
     let pb = await getPocketBaseInst()
 
     // Loads the projects whenever there is a change
-    pb.collection('pragueLocations').subscribe('*', (e) => {
-        loadLocations()
+    pb.collection('pragueLocations').subscribe('*', async (e) => {
+        await loadLocations()
     })
 }
