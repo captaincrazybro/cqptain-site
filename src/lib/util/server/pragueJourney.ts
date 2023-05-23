@@ -12,7 +12,7 @@ export async function loadLocations() {
     // Gets an instance of PocketBase
     let pb = await getPocketBaseInst()
     // Retrieves the projects
-    locations = await pb.collection('projects').getFullList()
+    locations = await pb.collection('pragueLocations').getFullList()
 }
 
 // Function to get the projects stored in cache
@@ -37,7 +37,7 @@ export async function subscribeToLocations() {
     let pb = await getPocketBaseInst()
 
     // Loads the projects whenever there is a change
-    pb.collection('projects').subscribe('*', async (e) => {
+    pb.collection('pragueLocations').subscribe('*', async (e) => {
         await loadLocations()
     })
 }
