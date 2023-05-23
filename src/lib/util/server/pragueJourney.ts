@@ -21,10 +21,10 @@ export async function getLocations(): Promise<Content[]> {
         await loadLocations()
         
         // Subscribes to the projects collection if needed
-        if (!isSubscribed) {
-            await subscribeToLocations()
-            isSubscribed = true
-        }
+        // if (!isSubscribed) {
+        //     await subscribeToLocations()
+        //     isSubscribed = true
+        // }
     }
 
     return serializeNonPOJOs(locations)

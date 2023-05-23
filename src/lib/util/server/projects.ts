@@ -20,10 +20,10 @@ export async function getProjects(): Promise<Content[]> {
         await loadProjects()
         
         // Subscribes to the projects collection if needed
-        if (!isSubscribed) {
-            await subscribeToProjects()
-            isSubscribed = true
-        }
+        // if (!isSubscribed) {
+        //     await subscribeToProjects()
+        //     isSubscribed = true
+        // }
     }
 
     return serializeNonPOJOs(projects)
