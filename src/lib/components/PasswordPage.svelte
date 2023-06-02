@@ -45,7 +45,7 @@
     <p>Please enter in the password.</p>
     <form class="password-form" method="POST">
         <label class="password-label" for="password">Password</label>
-        <input class="password-field" type="text" name="password" bind:value={formPassword} />
+        <input class="password-field" type="password" name="password" bind:value={formPassword} />
         <br />
         <div class="password-submit">
             <button type="submit">Submit</button>
