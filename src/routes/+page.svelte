@@ -39,7 +39,7 @@
             Prior to the start of my degree, I had also done a lot of programming and some Computer/Electrical Engineering activities. <br />
             Bellow is a link to download my resume.
         </p>
-        <a class="resume-icon" href="https://drive.google.com/file/d/1pcKiamXGTRtjuyRszFRWZojv6a3EDFoq/view?usp=sharing">
+        <a class="resume-icon" href="https://drive.google.com/file/d/1A9kZnF01-w7NU4LzWkr2lXz8PSZmXIFd/view?usp=sharing">
             <Fa icon={faFileArrowDown} size="5x"/>
         </a>
         <br />

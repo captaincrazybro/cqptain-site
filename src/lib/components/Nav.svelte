@@ -5,7 +5,7 @@
         {name: "Home", link: "/"},
         {name: "Projects", link: "/projects"},
         {name: "Socials", link: "/socials"},
-        {name: "About Me", link: "/about-me"},
+        {name: "Experience", link: "/experience"},
     ]
 </script>
 

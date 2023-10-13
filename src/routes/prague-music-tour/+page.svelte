@@ -7,17 +7,17 @@
 
     export let data: PageData
     let message = writable("Loading...")
-    let locations = writable([])
+    let items = writable([])
     let hostURL = writable('')
     
     onMount(async () => {
         if (data.passwordCorrect) {
-            const res = await fetch("/prague-journey", {
+            const res = await fetch("/prague-music-tour", {
                 method: "POST"
             })
             const jsonRes = await res.json()
 
-            locations.set(jsonRes.locations)
+            items.set(jsonRes.items)
             hostURL.set(jsonRes.hostURL)
         }
     })
@@ -25,11 +25,11 @@
 
 <PasswordPage data={data}>
     <h1>Prague Journey</h1>
-    {#if $locations.length == 0}
+    {#if $items.length == 0}
         <p>{ $message }</p>
     {:else}
         <div>
-            {#each $locations as location}
+            {#each $items as location}
                 <Content content={location} hostURL={$hostURL} imageSize={"large"} />
             {/each}
         </div>

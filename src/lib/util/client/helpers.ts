@@ -10,3 +10,22 @@ export interface Content {
     collectionId: string,
     id: string
 }
+
+export interface WorkExperience {
+    company: string,
+    location: string,
+    role: string,
+    startDate: Date,
+    isCurrentlyWorking: boolean,
+    endDate: Date,
+    description: string
+}
+
+export interface Language {
+    name: string,
+    isProficient: boolean
+}
+
+export interface Skill {
+    name: string
+}

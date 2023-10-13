@@ -6,6 +6,7 @@ declare namespace App {
 	interface Locals {
 		passwordCorrect: boolean;
 		passwordMessage: string;
+		loginCorrect: boolean;
 	}
 	interface PageData {}
 	// interface Platform {}

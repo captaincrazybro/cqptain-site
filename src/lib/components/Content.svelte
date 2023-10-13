@@ -1,5 +1,6 @@
 <script lang="ts">
     import { createImageURL, type Content } from "$lib/util/client/helpers";
+    import Container from "./Container.svelte";
 
     export let content: Content
     export let hostURL: string
@@ -20,19 +21,9 @@
         border-spacing: 10px;  
         margin: auto;
     }
-    .project-grid-item {
-        text-align: center;
-        background-color: rgb(253, 243, 243);
-        border: 2px;
-        border-color: rgb(187, 187, 187);
-        border-style: solid;
-        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.19);
-        padding: 10px;
-        margin: 5px;
-    }
 </style>
 
-<div class="project-grid-item">
+<Container>
     <table class="project-table">
         <tr>
             {#if content.image }
@@ -48,5 +39,5 @@
                 {/if}
             </td>
         </tr>
-</table>
-</div>
+    </table>
+</Container>
