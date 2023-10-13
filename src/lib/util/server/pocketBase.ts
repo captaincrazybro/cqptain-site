@@ -12,3 +12,8 @@ export async function getPocketBaseInst(): Promise<import('pocketbase').default>
         
     return pb
 }
+
+export function createPocketBaseInst(): import('pocketbase').default {
+    let pb = new PocketBase(POCKETBASE_URL)
+    return pb
+}
