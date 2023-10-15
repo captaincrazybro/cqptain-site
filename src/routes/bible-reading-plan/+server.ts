@@ -3,7 +3,7 @@ import type { RequestHandler } from "./$types";
 import * as fs from "fs";
 
 export const POST: RequestHandler = async () => {
-    let fileStr = fs.readFileSync("./books_and_chapters.csv", { encoding: 'utf8', flag: 'r'})
+    let fileStr = fs.readFileSync(".vercel_build_output/static/books_and_chapters.csv", { encoding: 'utf8', flag: 'r'})
     let fileLines = fileStr.split("\n")
 
     let books: string[] = []
