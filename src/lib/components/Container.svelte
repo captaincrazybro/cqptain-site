@@ -8,7 +8,6 @@
         box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.19);
         padding: 10px;
         margin: 5px;
-        width: auto;
     }
 </style>
 
