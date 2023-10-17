@@ -18,7 +18,7 @@ export const POST: RequestHandler = async (event) => {
     })
 
     return json({
-        startStr: new Date("2023/10/15:00:00:000:-5:00"),
+        startStr: new Date(1697342400000),
         books: books,
         chapters: chapters,
     })
