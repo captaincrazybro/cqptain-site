@@ -15,7 +15,7 @@
         margin: 0;
         text-align: center;
         display: inline-block;
-        margin-bottom: -4px;
+        margin-bottom: -3px;
     }
     li {
         float: left;
