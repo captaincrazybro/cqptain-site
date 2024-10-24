@@ -98,7 +98,7 @@
     }
 </style>
 
-<PasswordPage data={data}>
+<!--<PasswordPage data={data}>-->
     <h1>Bible Reading Plan</h1>
     {#if $message }
         <p>{ $message }</p>
@@ -122,4 +122,4 @@
             </table>
         {/if}
     {/if}
-</PasswordPage>
+<!--</PasswordPage>-->
