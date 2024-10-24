@@ -6,7 +6,7 @@
     import { writable, type Writable } from "svelte/store";
 
     export let data: PageData
-    let message = writable("Loading...")
+    let message = writable('')
     let books: string[] = []
     let chapters: number[] = []
     let start: Date
