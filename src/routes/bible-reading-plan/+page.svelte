@@ -6,7 +6,7 @@
     import { writable, type Writable } from "svelte/store";
 
     export let data: PageData
-    let message = writable('')
+    let message = writable("Loading...")
     let books: string[] = []
     let chapters: number[] = []
     let start: Date
@@ -69,17 +69,15 @@
     }
     
     onMount(async () => {
-        if (data.passwordCorrect) {
-            const res = await fetch("/bible-reading-plan", {
-                method: "POST"
-            })
-            const jsonRes = await res.json()
+        const res = await fetch("/bible-reading-plan", {
+            method: "POST"
+        })
+        const jsonRes = await res.json()
 
-            books = jsonRes.books
-            chapters = jsonRes.chapters
-            start = new Date(jsonRes.startStr)
-            message.set('')
-        }
+        books = jsonRes.books
+        chapters = jsonRes.chapters
+        start = new Date(jsonRes.startStr)
+        message.set('')
     })
 </script>
 
@@ -98,28 +96,26 @@
     }
 </style>
 
-<!--<PasswordPage data={data}>-->
-    <h1>Bible Reading Plan</h1>
-    {#if $message }
-        <p>{ $message }</p>
-    {:else}
-        {#if $book }
-            <h2>Reading for {getMonthName($targetDate)} {$targetDate.getDate()}, {$targetDate.getFullYear()}</h2>
-            <p>Read from <b>{$startingChapter < 0 ? books[$chapNum - 1] : $book} {$startingChapter < 0 ? chapters[$chapNum - 1] + $startingChapter + 1 : $startingChapter + 1}</b> to <b>{$book} {$startingChapter + $numChaptersToRead}</b></p>
-            <table class="buttons-table">
-                <tr>
-                    <td class="left-button-row">
-                        {#if $dayDiff > 0}
-                            <button on:click|preventDefault={onLastDayClick}>Last Day</button>
-                        {/if}
-                    </td>
-                    <td class="right-button-row">
-                        {#if $dayDiff < 364}
-                            <button on:click|preventDefault={onNextDayClick}>Next Day</button>
-                        {/if}
-                    </td>
-                </tr>
-            </table>
-        {/if}
+<h1>Bible Reading Plan</h1>
+{#if $message }
+    <p>{ $message }</p>
+{:else}
+    {#if $book }
+        <h2>Reading for {getMonthName($targetDate)} {$targetDate.getDate()}, {$targetDate.getFullYear()}</h2>
+        <p>Read from <b>{$startingChapter < 0 ? books[$chapNum - 1] : $book} {$startingChapter < 0 ? chapters[$chapNum - 1] + $startingChapter + 1 : $startingChapter + 1}</b> to <b>{$book} {$startingChapter + $numChaptersToRead}</b></p>
+        <table class="buttons-table">
+            <tr>
+                <td class="left-button-row">
+                    {#if $dayDiff > 0}
+                        <button on:click|preventDefault={onLastDayClick}>Last Day</button>
+                    {/if}
+                </td>
+                <td class="right-button-row">
+                    {#if $dayDiff < 364}
+                        <button on:click|preventDefault={onNextDayClick}>Next Day</button>
+                    {/if}
+                </td>
+            </tr>
+        </table>
     {/if}
-<!--</PasswordPage>-->
+{/if}
